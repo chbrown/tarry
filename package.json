@@ -1,0 +1,21 @@
+{
+  "name": "arrays",
+  "version": "0.0.0",
+  "description": "Utility library for manipulating JavaScript Arrays",
+  "keywords": [
+    "arrays",
+    "lists",
+    "utility"
+  ],
+  "homepage": "https://github.com/chbrown/arrays",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/chbrown/arrays.git"
+  },
+  "bugs": "https://github.com/chbrown/arrays/issues",
+  "author": "Christopher Brown <io@henrian.com> (http://henrian.com)",
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "*"
+  }
+}
