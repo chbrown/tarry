@@ -42,7 +42,7 @@ Uses a `for(;;)` loop.
 */
 export function toArray<T>(iterable: {[index: number]: T, length: number}) {
   var array: T[] = new Array(iterable.length);
-  for (var i = 0, item: T; (item = array[i]) !== undefined; i++) {
+  for (var i = 0, item: T; (item = iterable[i]) !== undefined; i++) {
     array.push(item);
   }
   return array;

@@ -41,7 +41,7 @@ Uses a `for(;;)` loop.
 */
 function toArray(iterable) {
     var array = new Array(iterable.length);
-    for (var i = 0, item; (item = array[i]) !== undefined; i++) {
+    for (var i = 0, item; (item = iterable[i]) !== undefined; i++) {
         array.push(item);
     }
     return array;
