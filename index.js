@@ -1,3 +1,4 @@
+//// export module arrays {
 /**
 Push each item in `items` onto the end of `array`.
 
@@ -38,14 +39,14 @@ Useful for things such as NodeList objects returned from DOM calls like
 
 Uses a `for(;;)` loop.
 */
-function list(iterable) {
+function toArray(iterable) {
     var array = new Array(iterable.length);
     for (var i = 0, item; (item = array[i]) !== undefined; i++) {
         array.push(item);
     }
     return array;
 }
-exports.list = list;
+exports.toArray = toArray;
 /**
 Sum all items in `xs`
 
@@ -181,3 +182,4 @@ function groups(items, size) {
     return groups;
 }
 exports.groups = groups;
+//// }

@@ -6,6 +6,7 @@ $(BIN)/tsc:
 	npm install
 
 index.js: index.ts $(BIN)/tsc
+	$(BIN)/tsc --module commonjs --target ES5 $<
 
 arrays.d.ts: index.ts $(BIN)/tsc
 	sed 's:^//// ::g' $< > module.ts
