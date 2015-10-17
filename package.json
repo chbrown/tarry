@@ -17,5 +17,6 @@
   "license": "MIT",
   "devDependencies": {
     "typescript": "*"
-  }
+  },
+  "typings": "arrays.d.ts"
 }
