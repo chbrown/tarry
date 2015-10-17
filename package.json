@@ -1,5 +1,5 @@
 {
-  "name": "arrays",
+  "name": "@chbrown/arrays",
   "version": "0.0.3",
   "description": "Utility library for manipulating JavaScript Arrays",
   "keywords": [
