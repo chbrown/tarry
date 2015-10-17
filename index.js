@@ -1,4 +1,3 @@
-//// export module arrays {
 /**
 Push each item in `items` onto the end of `array`.
 
@@ -182,4 +181,3 @@ function groups(items, size) {
     return groups;
 }
 exports.groups = groups;
-//// }

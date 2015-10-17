@@ -1,5 +1,3 @@
-//// export module arrays {
-
 /**
 Push each item in `items` onto the end of `array`.
 
@@ -180,5 +178,3 @@ export function groups<T>(items: T[], size: number): T[][] {
   }
   return groups;
 }
-
-//// }
