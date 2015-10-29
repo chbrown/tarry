@@ -1,5 +1,5 @@
 {
-  "name": "@chbrown/arrays",
+  "name": "tarry",
   "version": "0.0.5",
   "description": "Utility library for manipulating JavaScript Arrays",
   "keywords": [
@@ -7,16 +7,15 @@
     "lists",
     "utility"
   ],
-  "homepage": "https://github.com/chbrown/arrays",
+  "homepage": "https://github.com/chbrown/tarry",
   "repository": {
     "type": "git",
-    "url": "https://github.com/chbrown/arrays.git"
+    "url": "https://github.com/chbrown/tarry.git"
   },
-  "bugs": "https://github.com/chbrown/arrays/issues",
+  "bugs": "https://github.com/chbrown/tarry/issues",
   "author": "Christopher Brown <io@henrian.com> (http://henrian.com)",
   "license": "MIT",
   "devDependencies": {
     "typescript": "next"
-  },
-  "typings": "index.d.ts"
+  }
 }

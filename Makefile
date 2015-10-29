@@ -6,4 +6,4 @@ $(BIN)/tsc:
 	npm install
 
 index.js index.d.ts: index.ts $(BIN)/tsc
-	$(BIN)/tsc --module commonjs --target ES5 --declaration $<
+	$(BIN)/tsc -d
