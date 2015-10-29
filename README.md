@@ -4,7 +4,7 @@
 
 See [`index.d.ts`](index.d.ts) or [`index.ts`](index.ts) for "documentation" (sorry).
 
-This package used to be called `arrays`, installed via GitHub, then I tried out npm's `@chbrown` scope thing, which was kind of unwieldy. Better just to use a strange-ish name than deal with those issues. So, `arrays` → `@chbrown/arrays` → ~`typedarrays`~ → ~`typedarray`~ → ~`tarray`~ → `tarry`.
+This package used to be called `arrays`, installed via GitHub, then I tried out npm's `@chbrown` scope thing, which was kind of unwieldy. Better just to use a strange-ish name than deal with those issues. So, `arrays` → `@chbrown/arrays` → <del>`typedarrays`</del> → <del>`typedarray`</del> → <del>`tarray`</del> → `tarry`.
 
 
 ## License
