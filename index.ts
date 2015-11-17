@@ -30,6 +30,22 @@ export function flatMap<T, R>(items: T[], fn: (item: T, index: number, array: T[
 }
 
 /**
+Ensure that the given value is an array.
+If it is, return it.
+If it's not an array, return it as the sole member of a new array.
+If it's undefined, return an empty array.
+*/
+export function asArray<T>(value: T | T[]): T[] {
+  if (Array.isArray(value)) {
+    return value;
+  }
+  if (value !== undefined) {
+    return [<T>value];
+  }
+  return [];
+}
+
+/**
 Take anything that can be indexed by number (`iterable`) and return a new Array
 of elements of that type.
 

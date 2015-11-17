@@ -19,6 +19,13 @@ Uses `Array#map` and `Array#concat`.
 */
 export declare function flatMap<T, R>(items: T[], fn: (item: T, index: number, array: T[]) => R[], thisArg?: any): R[];
 /**
+Ensure that the given value is an array.
+If it is, return it.
+If it's not an array, return it as the sole member of a new array.
+If it's undefined, return an empty array.
+*/
+export declare function asArray<T>(value: T | T[]): T[];
+/**
 Take anything that can be indexed by number (`iterable`) and return a new Array
 of elements of that type.
 
