@@ -1,7 +1,17 @@
 /**
 Push each item in `items` onto the end of `array`.
 
-Uses `Array#push`.
+@param {Array} array: the array to extend with new items
+@param {Array} items: array of new items
+
+Similar to:
+
+    target = target.concat(items);
+
+Calls Array#push with Function.apply to unpack a single input array into
+multiple arguments.
+
+Equivalent to `array.push(...items)`
 */
 function pushAll(array, items) {
     return Array.prototype.push.apply(array, items);
@@ -10,7 +20,8 @@ exports.pushAll = pushAll;
 /**
 Concatenate each array in `arrays`, returning a single array.
 
-Uses `Array#concat`.
+Uses `Array#concat` with Function.apply to unpack the given array into a bunch
+of arrays, combining them all into a newly created array. Not recursive.
 */
 function flatten(arrays) {
     // TODO: disallow mixing of arrays and non-arrays? (concat don't care)

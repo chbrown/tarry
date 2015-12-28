@@ -1,13 +1,24 @@
 /**
 Push each item in `items` onto the end of `array`.
 
-Uses `Array#push`.
+@param {Array} array: the array to extend with new items
+@param {Array} items: array of new items
+
+Similar to:
+
+    target = target.concat(items);
+
+Calls Array#push with Function.apply to unpack a single input array into
+multiple arguments.
+
+Equivalent to `array.push(...items)`
 */
 export declare function pushAll<T>(array: T[], items: T[]): void;
 /**
 Concatenate each array in `arrays`, returning a single array.
 
-Uses `Array#concat`.
+Uses `Array#concat` with Function.apply to unpack the given array into a bunch
+of arrays, combining them all into a newly created array. Not recursive.
 */
 export declare function flatten<T>(arrays: T[][]): T[];
 /**
