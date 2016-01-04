@@ -208,3 +208,27 @@ function groups(items, size) {
     return groups;
 }
 exports.groups = groups;
+/**
+Copy each source's own enumerable properties into the target object.
+
+@param {Object} target - The target object to copy into.
+@param {Object[]} sources - One or more source objects from which to copy enumerable properties.
+@returns {Object} - Returns the target object.
+*/
+function assign(target) {
+    var sources = [];
+    for (var _i = 1; _i < arguments.length; _i++) {
+        sources[_i - 1] = arguments[_i];
+    }
+    if (target === null || target === undefined) {
+        throw new TypeError('Cannot convert undefined or null to object');
+    }
+    target = Object(target);
+    sources.forEach(function (source) {
+        Object.keys(source).forEach(function (key) {
+            target[key] = source[key];
+        });
+    });
+    return target;
+}
+exports.assign = assign;

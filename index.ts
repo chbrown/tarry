@@ -205,3 +205,26 @@ export function groups<T>(items: T[], size: number): T[][] {
   }
   return groups;
 }
+
+export function assign<T, U>(target: T, source: U): T & U;
+export function assign<T, U, V>(target: T, source1: U, source2: V): T & U & V;
+export function assign<T, U, V, W>(target: T, source1: U, source2: V, source3: W): T & U & V & W;
+/**
+Copy each source's own enumerable properties into the target object.
+
+@param {Object} target - The target object to copy into.
+@param {Object[]} sources - One or more source objects from which to copy enumerable properties.
+@returns {Object} - Returns the target object.
+*/
+export function assign(target: any, ...sources: any[]): any {
+  if (target === null || target === undefined) {
+    throw new TypeError('Cannot convert undefined or null to object');
+  }
+  target = Object(target);
+  sources.forEach(source => {
+    Object.keys(source).forEach(key => {
+      target[key] = source[key];
+    });
+  });
+  return target;
+}
