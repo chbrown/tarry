@@ -140,3 +140,13 @@ describe('mergeBy', () => {
     ]);
   });
 });
+
+describe('toObject', () => {
+  it('should create object using nameKey and valueKey defaults', () => {
+    const actual = tarry.toObject([
+      {key: 'firstname', value: 'Chris'},
+      {key: 'lastname', value: 'Brown'},
+    ]);
+    assert.deepEqual(actual, {firstname: 'Chris', lastname: 'Brown'});
+  });
+});

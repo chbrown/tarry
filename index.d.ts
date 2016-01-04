@@ -140,3 +140,16 @@ mergeBy([
 ]
 */
 export declare function mergeBy<T>(items: T[], idKey?: string): T[];
+/**
+Convert an Array of objects with fixed keys to an object with variable keys.
+
+E.g.:
+
+    toObject([
+      {key: 'firstname', value: 'Chris'},
+      {key: 'lastname', value: 'Brown'},
+    ]) => [
+      {firstname: 'Chris', lastname: 'Brown'},
+    ]
+*/
+export declare function toObject<T>(items: T[], nameKey?: string, valueKey?: string): {};

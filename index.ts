@@ -258,3 +258,23 @@ export function mergeBy<T>(items: T[], idKey: string = 'id'): T[] {
   });
   return mergedItems;
 }
+
+/**
+Convert an Array of objects with fixed keys to an object with variable keys.
+
+E.g.:
+
+    toObject([
+      {key: 'firstname', value: 'Chris'},
+      {key: 'lastname', value: 'Brown'},
+    ]) => [
+      {firstname: 'Chris', lastname: 'Brown'},
+    ]
+*/
+export function toObject<T>(items: T[], nameKey: string = 'key', valueKey: string = 'value') {
+  let object = {};
+  items.forEach(item => {
+    object[item[nameKey]] = item[valueKey];
+  });
+  return object;
+}

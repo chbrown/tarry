@@ -263,3 +263,25 @@ function mergeBy(items, idKey) {
     return mergedItems;
 }
 exports.mergeBy = mergeBy;
+/**
+Convert an Array of objects with fixed keys to an object with variable keys.
+
+E.g.:
+
+    toObject([
+      {key: 'firstname', value: 'Chris'},
+      {key: 'lastname', value: 'Brown'},
+    ]) => [
+      {firstname: 'Chris', lastname: 'Brown'},
+    ]
+*/
+function toObject(items, nameKey, valueKey) {
+    if (nameKey === void 0) { nameKey = 'key'; }
+    if (valueKey === void 0) { valueKey = 'value'; }
+    var object = {};
+    items.forEach(function (item) {
+        object[item[nameKey]] = item[valueKey];
+    });
+    return object;
+}
+exports.toObject = toObject;
