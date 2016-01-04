@@ -22,5 +22,8 @@
     "mocha": "*",
     "mocha-lcov-reporter": "*",
     "typescript": "next"
+  },
+  "scripts": {
+    "test": "make test"
   }
 }
