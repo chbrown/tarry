@@ -109,13 +109,14 @@ Does not manipulate `xs`.
 Uses `Array#slice(0)` and `Array#sort`.
 */
 export function median(xs: number[]): number {
-  var sorted_xs = xs.slice(0).sort();
-  var middle = sorted_xs.length / 2;
+  // sort without a predicate does lexicographic sort
+  xs = xs.slice(0).sort((a, b) => a - b);
   // if xs is even, average the two middle items
-  if (sorted_xs.length % 2 === 0) {
-    return (sorted_xs[middle - 1] + sorted_xs[middle]) / 2.0;
+  if (xs.length % 2 === 0) {
+    var middle = xs.length / 2;
+    return (xs[middle - 1] + xs[middle]) / 2.0;
   }
-  return sorted_xs[middle - 0.5];
+  return xs[(xs.length - 1) / 2];
 }
 
 /**
