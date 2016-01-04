@@ -1,5 +1,9 @@
 # tarry
 
+[![npm version](https://badge.fury.io/js/tarry.svg)](https://www.npmjs.com/package/tarry)
+[![Travis CI Build Status](https://travis-ci.org/chbrown/tarry.svg)](https://travis-ci.org/chbrown/tarry)
+[![Coverage Status](https://coveralls.io/repos/chbrown/tarry/badge.svg)](https://coveralls.io/github/chbrown/tarry)
+
     npm install --save tarry
 
 See [`index.d.ts`](index.d.ts) or [`index.ts`](index.ts) for "documentation" (sorry).
