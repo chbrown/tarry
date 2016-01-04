@@ -1,6 +1,6 @@
 {
   "name": "tarry",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "Utility library for manipulating JavaScript Arrays",
   "keywords": [
     "arrays",
