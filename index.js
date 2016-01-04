@@ -129,7 +129,7 @@ function quantile(xs, q, sort) {
     var step = length / q;
     var quantile = [];
     if (sort) {
-        xs = xs.sort(function (a, b) { return a - b; });
+        xs = xs.slice(0).sort(function (a, b) { return a - b; });
     }
     for (var sample = 0; sample < length; sample += step) {
         quantile.push(xs[sample | 0]);

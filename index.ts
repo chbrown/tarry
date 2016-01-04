@@ -128,7 +128,7 @@ export function quantile(xs: number[], q: number, sort: boolean = true): number[
   const step = length / q;
   var quantile: number[] = [];
   if (sort) {
-    xs = xs.sort((a, b) => a - b);
+    xs = xs.slice(0).sort((a, b) => a - b);
   }
   for (var sample = 0; sample < length; sample += step) {
     quantile.push(xs[sample | 0]);
