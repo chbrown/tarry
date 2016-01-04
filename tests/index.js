@@ -46,7 +46,6 @@ describe('asArray', () => {
   });
 });
 
-
 describe('sum', () => {
   it('should sum [1, 2, 3, 4] to 10', () => {
     assert.equal(tarry.sum([1, 2, 3, 4]), 10);
@@ -65,6 +64,19 @@ describe('median', () => {
   });
   it('should median [64, 1, 5, 7, 2, 19] to 6', () => {
     assert.equal(tarry.median([64, 1, 5, 7, 2, 19]), 6);
+  });
+});
+
+describe('quantile', () => {
+  it('should 1-quantile [4, 5, 1, 10, 3, 2] to [1, 10]', () => {
+    assert.deepEqual(tarry.quantile([4, 5, 1, 10, 3, 2], 1), [1, 10]);
+  });
+  it('should 2-quantile [5, 2, 7, 10, 1] to [1, 5, 10]', () => {
+    assert.deepEqual(tarry.quantile([5, 2, 7, 10, 1], 2), [1, 5, 10]);
+  });
+  it('should 4-quantile range(101) to [0, 25, 50, 75, 100] without sorting', () => {
+    let xs = tarry.range(101);
+    assert.deepEqual(tarry.quantile(xs, 4, false), [0, 25, 50, 75, 100]);
   });
 });
 
