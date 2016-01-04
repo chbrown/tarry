@@ -128,7 +128,7 @@ export declare function assign<T, U>(target: T, source: U): T & U;
 export declare function assign<T, U, V>(target: T, source1: U, source2: V): T & U & V;
 export declare function assign<T, U, V, W>(target: T, source1: U, source2: V, source3: W): T & U & V & W;
 /**
-Merge each item in items that shares the same identifier.
+Merge each subset of items that share the same identifier.
 
 mergeBy([
   {id: 1, firstname: 'Chris'},
@@ -140,6 +140,27 @@ mergeBy([
 ]
 */
 export declare function mergeBy<T>(items: T[], idKey?: string): T[];
+/**
+Concatenate each subset of items that share the same identifier.
+
+groupBy([
+  {id: 1, key: 'firstname', value: 'Chris'},
+  {id: 1, key: 'lastname',  value: 'Brown'},
+  {id: 2, key: 'firstname', value: 'Lionel'},
+]) => [
+  [
+    {id: 1, key: 'firstname', value: 'Chris'},
+    {id: 1, key: 'lastname',  value: 'Brown'},
+  ],
+  [
+    {id: 2, key: 'firstname', value: 'Lionel'},
+  ]
+]
+
+This is very similar to mergeBy, except that instead of using {} as a base
+and combining with assign(), groupBy uses [] as a base and combines with push().
+*/
+export declare function groupBy<T>(items: T[], idKey?: string): T[][];
 /**
 Convert an Array of objects with fixed keys to an object with variable keys.
 

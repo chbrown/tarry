@@ -234,7 +234,7 @@ function assign(target) {
 }
 exports.assign = assign;
 /**
-Merge each item in items that shares the same identifier.
+Merge each subset of items that share the same identifier.
 
 mergeBy([
   {id: 1, firstname: 'Chris'},
@@ -263,6 +263,42 @@ function mergeBy(items, idKey) {
     return mergedItems;
 }
 exports.mergeBy = mergeBy;
+/**
+Concatenate each subset of items that share the same identifier.
+
+groupBy([
+  {id: 1, key: 'firstname', value: 'Chris'},
+  {id: 1, key: 'lastname',  value: 'Brown'},
+  {id: 2, key: 'firstname', value: 'Lionel'},
+]) => [
+  [
+    {id: 1, key: 'firstname', value: 'Chris'},
+    {id: 1, key: 'lastname',  value: 'Brown'},
+  ],
+  [
+    {id: 2, key: 'firstname', value: 'Lionel'},
+  ]
+]
+
+This is very similar to mergeBy, except that instead of using {} as a base
+and combining with assign(), groupBy uses [] as a base and combines with push().
+*/
+function groupBy(items, idKey) {
+    if (idKey === void 0) { idKey = 'id'; }
+    var groupedItems = [];
+    var groupedItemsMapping = {};
+    items.forEach(function (item) {
+        var id = item[idKey];
+        var groupedItem = groupedItemsMapping[id];
+        if (groupedItem === undefined) {
+            groupedItem = groupedItemsMapping[id] = [];
+            groupedItems.push(groupedItem);
+        }
+        groupedItem.push(item);
+    });
+    return groupedItems;
+}
+exports.groupBy = groupBy;
 /**
 Convert an Array of objects with fixed keys to an object with variable keys.
 

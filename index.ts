@@ -231,7 +231,7 @@ export function assign(target: any, ...sources: any[]): any {
 }
 
 /**
-Merge each item in items that shares the same identifier.
+Merge each subset of items that share the same identifier.
 
 mergeBy([
   {id: 1, firstname: 'Chris'},
@@ -257,6 +257,41 @@ export function mergeBy<T>(items: T[], idKey: string = 'id'): T[] {
     assign(mergedItem, item);
   });
   return mergedItems;
+}
+
+/**
+Concatenate each subset of items that share the same identifier.
+
+groupBy([
+  {id: 1, key: 'firstname', value: 'Chris'},
+  {id: 1, key: 'lastname',  value: 'Brown'},
+  {id: 2, key: 'firstname', value: 'Lionel'},
+]) => [
+  [
+    {id: 1, key: 'firstname', value: 'Chris'},
+    {id: 1, key: 'lastname',  value: 'Brown'},
+  ],
+  [
+    {id: 2, key: 'firstname', value: 'Lionel'},
+  ]
+]
+
+This is very similar to mergeBy, except that instead of using {} as a base
+and combining with assign(), groupBy uses [] as a base and combines with push().
+*/
+export function groupBy<T>(items: T[], idKey: string = 'id'): T[][] {
+  let groupedItems: T[][] = [];
+  let groupedItemsMapping: {[index: string]: T[]} = {};
+  items.forEach(item => {
+    let id = item[idKey];
+    let groupedItem = groupedItemsMapping[id];
+    if (groupedItem === undefined) {
+      groupedItem = groupedItemsMapping[id] = [];
+      groupedItems.push(groupedItem);
+    }
+    groupedItem.push(item);
+  });
+  return groupedItems;
 }
 
 /**

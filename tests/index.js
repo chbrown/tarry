@@ -129,7 +129,7 @@ describe('assign', () => {
 });
 
 describe('mergeBy', () => {
-  it('should merge two lists using the default idKey value', () => {
+  it('should merge a list using the default idKey value', () => {
     const actual = tarry.mergeBy([
       {id: 1, firstname: 'Chris'},
       {id: 1, lastname: 'Brown'},
@@ -140,7 +140,7 @@ describe('mergeBy', () => {
       {id: 2, firstname: 'Lionel'},
     ]);
   });
-  it('should merge two lists using a custom idKey value', () => {
+  it('should merge a list using a custom idKey value', () => {
     const actual = tarry.mergeBy([
       {username: 'chbrown', firstname: 'Chris'},
       {username: 'chbrown', lastname: 'Brown'},
@@ -152,6 +152,26 @@ describe('mergeBy', () => {
     ]);
   });
 });
+
+describe('groupBy', () => {
+  it('should group a list using the default idKey value', () => {
+    const actual = tarry.groupBy([
+      {id: 1, key: 'firstname', value: 'Chris'},
+      {id: 1, key: 'lastname',  value: 'Brown'},
+      {id: 2, key: 'firstname', value: 'Lionel'},
+    ]);
+    assert.deepEqual(actual, [
+      [
+        {id: 1, key: 'firstname', value: 'Chris'},
+        {id: 1, key: 'lastname',  value: 'Brown'},
+      ],
+      [
+        {id: 2, key: 'firstname', value: 'Lionel'},
+      ],
+    ]);
+  });
+});
+
 
 describe('toObject', () => {
   it('should create object using nameKey and valueKey defaults', () => {
