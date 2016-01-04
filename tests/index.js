@@ -115,3 +115,28 @@ describe('assign', () => {
     assert.throws(() => tarry.assign(null, {b: 98}));
   });
 });
+
+describe('mergeBy', () => {
+  it('should merge two lists using the default idKey value', () => {
+    const actual = tarry.mergeBy([
+      {id: 1, firstname: 'Chris'},
+      {id: 1, lastname: 'Brown'},
+      {id: 2, firstname: 'Lionel'},
+    ]);
+    assert.deepEqual(actual, [
+      {id: 1, firstname: 'Chris', lastname: 'Brown'},
+      {id: 2, firstname: 'Lionel'},
+    ]);
+  });
+  it('should merge two lists using a custom idKey value', () => {
+    const actual = tarry.mergeBy([
+      {username: 'chbrown', firstname: 'Chris'},
+      {username: 'chbrown', lastname: 'Brown'},
+      {username: 'lion', firstname: 'Lionel'},
+    ], 'username');
+    assert.deepEqual(actual, [
+      {username: 'chbrown', firstname: 'Chris', lastname: 'Brown'},
+      {username: 'lion', firstname: 'Lionel'},
+    ]);
+  });
+});

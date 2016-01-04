@@ -233,3 +233,33 @@ function assign(target) {
     return target;
 }
 exports.assign = assign;
+/**
+Merge each item in items that shares the same identifier.
+
+mergeBy([
+  {id: 1, firstname: 'Chris'},
+  {id: 1, lastname: 'Brown'},
+  {id: 2, firstname: 'Lionel'},
+]) => [
+  {id: 1, firstname: 'Chris', lastname: 'Brown'},
+  {id: 2, firstname: 'Lionel'},
+]
+*/
+function mergeBy(items, idKey) {
+    if (idKey === void 0) { idKey = 'id'; }
+    var mergedItems = [];
+    // mergedItemsMapping is a helper that maps from ids to the matching object,
+    // which is also stored in the mergedItems array
+    var mergedItemsMapping = {};
+    items.forEach(function (item) {
+        var id = item[idKey];
+        var mergedItem = mergedItemsMapping[id];
+        if (mergedItem === undefined) {
+            mergedItem = mergedItemsMapping[id] = {};
+            mergedItems.push(mergedItem);
+        }
+        assign(mergedItem, item);
+    });
+    return mergedItems;
+}
+exports.mergeBy = mergeBy;

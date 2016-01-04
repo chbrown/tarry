@@ -229,3 +229,32 @@ export function assign(target: any, ...sources: any[]): any {
   });
   return target;
 }
+
+/**
+Merge each item in items that shares the same identifier.
+
+mergeBy([
+  {id: 1, firstname: 'Chris'},
+  {id: 1, lastname: 'Brown'},
+  {id: 2, firstname: 'Lionel'},
+]) => [
+  {id: 1, firstname: 'Chris', lastname: 'Brown'},
+  {id: 2, firstname: 'Lionel'},
+]
+*/
+export function mergeBy<T>(items: T[], idKey: string = 'id'): T[] {
+  let mergedItems: T[] = [];
+  // mergedItemsMapping is a helper that maps from ids to the matching object,
+  // which is also stored in the mergedItems array
+  let mergedItemsMapping = {};
+  items.forEach(item => {
+    let id = item[idKey];
+    let mergedItem = mergedItemsMapping[id];
+    if (mergedItem === undefined) {
+      mergedItem = mergedItemsMapping[id] = {};
+      mergedItems.push(mergedItem);
+    }
+    assign(mergedItem, item);
+  });
+  return mergedItems;
+}
