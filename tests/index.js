@@ -46,6 +46,12 @@ describe('asArray', () => {
   });
 });
 
+describe('toArray', () => {
+  it('should reduce object to plain Array, ignoring irrelevant fields', () => {
+    assert.deepEqual(tarry.toArray({0: 'a', 1: 'b', type: 'CustomObj', length: 2}), ['a', 'b']);
+  });
+});
+
 describe('sum', () => {
   it('should sum [1, 2, 3, 4] to 10', () => {
     assert.equal(tarry.sum([1, 2, 3, 4]), 10);
@@ -171,7 +177,6 @@ describe('groupBy', () => {
     ]);
   });
 });
-
 
 describe('toObject', () => {
   it('should create object using nameKey and valueKey defaults', () => {

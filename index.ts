@@ -66,9 +66,10 @@ Useful for things such as NodeList objects returned from DOM calls like
 Uses a `for(;;)` loop.
 */
 export function toArray<T>(iterable: {[index: number]: T, length: number}) {
-  var array: T[] = new Array(iterable.length);
-  for (var i = 0, item: T; (item = iterable[i]) !== undefined; i++) {
-    array.push(item);
+  var length = iterable.length;
+  var array: T[] = new Array(length);
+  for (var i = 0; i < length; i++) {
+    array[i] = iterable[i];
   }
   return array;
 }
