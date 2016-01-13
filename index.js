@@ -322,3 +322,35 @@ function toObject(items, nameKey, valueKey) {
     return object;
 }
 exports.toObject = toObject;
+/**
+Groups contiguous equivalent items together.
+
+I.e., if equal(items[i], items[i + 1]) returns true, then items[i] and
+items[i + 1] will end up in the same sublist.
+
+Returns a regrouping of items that, if flattened, would be equivalent to items.
+*/
+function groupSequential(items, areEqual) {
+    if (areEqual === void 0) { areEqual = function (a, b) { return a === b; }; }
+    if (items.length === 0) {
+        return [];
+    }
+    var previousItem = items[0];
+    var currentSublist = [previousItem];
+    var sublists = [currentSublist];
+    for (var i = 1, l = items.length; i < l; i++) {
+        var currentItem = items[i];
+        // if comparison returns true, currentItem belongs in the same group as previousItem
+        if (areEqual(previousItem, currentItem)) {
+            currentSublist.push(currentItem);
+        }
+        else {
+            // start a new sublist and add it to sublists
+            currentSublist = [currentItem];
+            sublists.push(currentSublist);
+        }
+        previousItem = currentItem;
+    }
+    return sublists;
+}
+exports.groupSequential = groupSequential;

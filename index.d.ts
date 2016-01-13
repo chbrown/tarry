@@ -174,3 +174,12 @@ E.g.:
     ]
 */
 export declare function toObject<T>(items: T[], nameKey?: string, valueKey?: string): {};
+/**
+Groups contiguous equivalent items together.
+
+I.e., if equal(items[i], items[i + 1]) returns true, then items[i] and
+items[i + 1] will end up in the same sublist.
+
+Returns a regrouping of items that, if flattened, would be equivalent to items.
+*/
+export declare function groupSequential<T>(items: T[], areEqual?: (a: T, b: T) => boolean): T[][];

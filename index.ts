@@ -314,3 +314,34 @@ export function toObject<T>(items: T[], nameKey: string = 'key', valueKey: strin
   });
   return object;
 }
+
+/**
+Groups contiguous equivalent items together.
+
+I.e., if equal(items[i], items[i + 1]) returns true, then items[i] and
+items[i + 1] will end up in the same sublist.
+
+Returns a regrouping of items that, if flattened, would be equivalent to items.
+*/
+export function groupSequential<T>(items: T[], areEqual: (a: T, b: T) => boolean = (a, b) => a === b): T[][] {
+  if (items.length === 0) {
+    return [];
+  }
+  let previousItem = items[0];
+  let currentSublist = [previousItem];
+  const sublists = [currentSublist];
+  for (var i = 1, l = items.length; i < l; i++) {
+    var currentItem = items[i];
+    // if comparison returns true, currentItem belongs in the same group as previousItem
+    if (areEqual(previousItem, currentItem)) {
+      currentSublist.push(currentItem);
+    }
+    else {
+      // start a new sublist and add it to sublists
+      currentSublist = [currentItem];
+      sublists.push(currentSublist);
+    }
+    previousItem = currentItem;
+  }
+  return sublists;
+}

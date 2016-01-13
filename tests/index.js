@@ -187,3 +187,12 @@ describe('toObject', () => {
     assert.deepEqual(actual, {firstname: 'Chris', lastname: 'Brown'});
   });
 });
+
+
+describe('groupSequential', () => {
+  it('should sequentially group a list using the default equality predicate (strict equality)', () => {
+    const actual = tarry.groupSequential(['a', 'a', 'b', 'c', 'b']);
+    assert.deepEqual(actual, [['a', 'a'], ['b'], ['c'], ['b']]);
+  });
+});
+
