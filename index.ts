@@ -325,15 +325,29 @@ E.g.:
     toObject([
       {key: 'firstname', value: 'Chris'},
       {key: 'lastname', value: 'Brown'},
-    ]) => [
-      {firstname: 'Chris', lastname: 'Brown'},
-    ]
+    ])
+    -> {firstname: 'Chris', lastname: 'Brown'}
 */
 export function toObject<T>(items: T[], nameKey: string = 'key', valueKey: string = 'value') {
   let object = {};
   items.forEach(item => {
     object[item[nameKey]] = item[valueKey];
   });
+  return object;
+}
+
+/**
+Convert an Array of [string, T] tuples to an object.
+
+E.g.:
+
+    tuplesToObject([ ['firstname', 'Chris'], ['lastname', 'Brown'] ])
+    -> {firstname: 'Chris', lastname: 'Brown'}
+
+*/
+export function tuplesToObject<T>(tuples: [string, T][]): {[index: string]: T} {
+  var object: {[index: string]: T} = {};
+  tuples.forEach(([key, value]) => object[key] = value);
   return object;
 }
 

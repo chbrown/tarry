@@ -203,6 +203,12 @@ describe('toObject', () => {
   });
 });
 
+describe('tuplesToObject', () => {
+  it('should create object from 2-tuples', () => {
+    const actual = tarry.tuplesToObject([['firstname', 'Chris'], ['lastname', 'Brown']]);
+    assert.deepEqual(actual, {firstname: 'Chris', lastname: 'Brown'});
+  });
+});
 
 describe('groupSequential', () => {
   it('should sequentially group a list using the default equality predicate (strict equality)', () => {
