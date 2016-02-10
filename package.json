@@ -21,7 +21,7 @@
     "istanbul": "*",
     "mocha": "*",
     "mocha-lcov-reporter": "*",
-    "typescript": "next"
+    "typescript": "*"
   },
   "scripts": {
     "test": "make test"
