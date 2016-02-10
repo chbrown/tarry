@@ -29,6 +29,28 @@ export function flatten<T>(arrays: T[][]): T[] {
 }
 
 /**
+Transpose an Array of Arrays.
+
+E.g.:
+
+    zip([
+      [1, 2, 3],
+      [2, 4, 6],
+      [1, 4, 8],
+      [10, 100, 1000],
+    ])
+    -> [[1, 2, 1, 10], [2, 4, 4, 100], [3, 6, 8, 1000]]
+
+*/
+export function zip<T>(itemss: T[][]) {
+  var lengths = itemss.map(items => items.length);
+  var minLength = Math.min(...lengths);
+  return range(minLength).map(index => {
+    return itemss.map(items => items[index]);
+  });
+}
+
+/**
 Call `fn` with each item in `items`, and flatten the results into a single array.
 
 `fn` should always return an Array.

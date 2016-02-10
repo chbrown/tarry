@@ -18,6 +18,21 @@ describe('flatten', () => {
   });
 });
 
+describe('zip', () => {
+  it('should transpose a list of lists', () => {
+    assert.deepEqual(tarry.zip([
+      [1, 2, 3],
+      [2, 4, 6],
+      [1, 4, 8],
+      [10, 100, 1000],
+    ]), [
+      [1, 2, 1, 10],
+      [2, 4, 4, 100],
+      [3, 6, 8, 1000],
+    ]);
+  });
+});
+
 describe('flatMap', () => {
   it('should map a list into another list using a function from values to lists', () => {
     let actual = tarry.flatMap([1, 2, 3, 4, 5], x => {
