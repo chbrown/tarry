@@ -382,3 +382,21 @@ export function groupSequential<T>(items: T[], areEqual: (a: T, b: T) => boolean
   }
   return sublists;
 }
+
+/**
+Shuffle the array {xs} in-place, using the Durstenfeld variation on the
+Fisher-Yates algorithm.
+*/
+export function shuffle<T>(xs: T[]): T[] {
+  const n = xs.length;
+  const last = n - 1;
+  for (let i = 0; i < last; i++) {
+    // generate integer j such that 0 ≤ j < (n - i)
+    let j = Math.random() * (n - i) | 0;
+    // exchange xs[i] and xs[j]
+    let xs_i = xs[i];
+    xs[i] = xs[j];
+    xs[j] = xs_i;
+  }
+  return xs;
+}
