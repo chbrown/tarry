@@ -400,3 +400,16 @@ export function shuffle<T>(xs: T[]): T[] {
   }
   return xs;
 }
+
+/**
+Sample (up to) {length} items without replacement from {xs}.
+
+This creates an array of all indexes in {xs}, using range, and then shuffles
+that entire array, so this is probably not the fastest method for sampling a
+small number of elements from a large array.
+*/
+export function sample<T>(xs: T[], length: number): T[] {
+  const indices = range(xs.length);
+  // the slice call handles the case where length > xs.length
+  return shuffle(indices).slice(0, length).map(index => xs[index]);
+}
