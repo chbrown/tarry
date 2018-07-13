@@ -68,7 +68,7 @@ If it is, return it.
 If it's not an array, return it as the sole member of a new array.
 If it's undefined, return an empty array.
 */
-export function asArray<T>(value: T | T[]): T[] {
+export function asArray<T>(value?: T | T[]): T[] {
   if (Array.isArray(value)) {
     return value;
   }
