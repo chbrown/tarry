@@ -1,5 +1,5 @@
-import assert from 'assert';
-import {describe, it} from 'mocha';
+import * as assert from 'assert';
+import 'mocha';
 
 import * as tarry from '..';
 
@@ -63,7 +63,8 @@ describe('asArray', () => {
 
 describe('toArray', () => {
   it('should reduce object to plain Array, ignoring irrelevant fields', () => {
-    assert.deepEqual(tarry.toArray({0: 'a', 1: 'b', type: 'CustomObj', length: 2}), ['a', 'b']);
+    let iterable = {0: 'a', 1: 'b', type: 'CustomObj', length: 2};
+    assert.deepEqual(tarry.toArray(iterable), ['a', 'b']);
   });
 });
 
