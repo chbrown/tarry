@@ -1,6 +1,5 @@
-index.ts
-coverage/
-tests/
+*.ts
+!*.d.ts
 .travis.yml
-Makefile
 tsconfig.json
+test/
